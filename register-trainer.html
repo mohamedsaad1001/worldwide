@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل مدرب أو معلم | Worldwide</title>
+    <link rel="stylesheet" href="responsive-global.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register-trainer.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+</head>
+<body>
+    <div class="trainer-bg-decor">
+        
+    </div>
+    <div class="header">
+        <div class="nav">
+            <a href="home.html">المهنيين</a>
+            <a href="booking.html">حجز موعد</a>
+            <a href="register-trainer.html">سجّل</a>
+            <a href="login.html">تسجيل الدخول</a>
+        </div>
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+         <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            Worldwide
+
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="24" height="24" rx="6" fill="#5e9ea0"/>
+                <rect x="10" y="10" width="12" height="12" rx="3" fill="#fff"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="home.html" onclick="closeMobileMenu()">المهنيين</a>
+        <a href="booking.html" onclick="closeMobileMenu()">حجز موعد</a>
+        <a href="register-trainer.html" onclick="closeMobileMenu()">سجّل</a>
+        <a href="login.html" onclick="closeMobileMenu()">تسجيل الدخول</a>
+    </div>
+    <main class="trainer-main-card">
+        <div class="profile-icon">
+          
+        </div>
+        <h2 class="trainer-title">سجّل كخبير</h2>
+        <form class="trainer-form-grid">
+            <div class="form-group">
+                <input type="text" id="fullname" name="fullname" required placeholder="الاسم الكامل">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" required placeholder="البريد الإلكتروني">
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" pattern="09[0-9]{8}" required placeholder="09XXXXXXXX " maxlength="10" minlength="10" autocomplete="tel">
+            </div>
+            <div class="form-group">
+                <select id="job" name="job" required>
+                    <option value="">المسمى الوظيفي</option>
+                    <option value="مدرب">مدرب</option>
+                    <option value="معلم">معلم</option>
+                    <option value="استاذ">أستاذ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea id="desc" name="desc" placeholder="وصف عنك وعن خبرتك" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" id="times" name="times" placeholder="مواعيدك المتاحة (مثال: كل يوم من 4 إلى 8 مساءً)" required>
+            </div>
+            <div class="form-group">
+                <input type="file" id="photo" name="photo" accept="image/*" required placeholder="صورتك الشخصية">
+            </div>
+            <div class="form-group">
+                <input type="file" id="video" name="video" accept="video/*" placeholder="فيديو تعريفي (اختياري)">
+            </div>
+            <div class="form-group">
+                <input type="text" id="location" name="location" placeholder="المدينة / الموقع (مثال: الرياض)" required>
+            </div>
+            <div class="form-group">
+                <input type="number" id="price" name="price" min="0" placeholder="سعر الجلسة (اختياري)">
+            </div>
+            <button class="register-btn full-width-btn" type="submit">انضم الآن</button>
+        </form>
+    </main>
+    <div class="footer alt-footer">
+        © 2025 - Worldwide | All rights reserved.
+    </div>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (mobileNav && toggle) {
+                mobileNav.classList.toggle('active');
+                toggle.classList.toggle('active');
+
+                // Prevent body scroll when menu is open
+                if (mobileNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                } else {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (mobileNav && toggle) {
+                mobileNav.classList.remove('active');
+                toggle.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        }
+
+        // Close mobile menu when clicking on the overlay
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (mobileNav) {
+                mobileNav.addEventListener('click', function(event) {
+                    // Close menu if clicking on the overlay (not on links)
+                    if (event.target === mobileNav) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>

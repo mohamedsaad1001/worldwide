@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احجز موعدك | Worldwide</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="responsive-global.css">
+    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+    <script src="script.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // إظهار حقل التخصص تلقائيًا عند اختيار مهنة لها تخصص
+      var service = document.getElementById('service');
+      var specialtyGroup = document.getElementById('specialtyGroup');
+      service.addEventListener('change', function() {
+        if(this.value === 'طبيب' || this.value === 'أستاذ') {
+          specialtyGroup.style.display = '';
+        } else {
+          specialtyGroup.style.display = 'none';
+          document.getElementById('specialty').value = '';
+        }
+      });
+      // تعبئة تلقائية إذا أتيت من رابط
+      const params = new URLSearchParams(window.location.search);
+      if(params.get('proName')) document.getElementById('proName').value = params.get('proName');
+      if(params.get('service')) {
+        for(let i=0;i<service.options.length;i++){
+          if(service.options[i].value === params.get('service')){
+            service.selectedIndex = i;
+            service.dispatchEvent(new Event('change'));
+            break;
+          }
+        }
+      }
+      if(params.get('specialty')) {
+        document.getElementById('specialty').value = params.get('specialty');
+        specialtyGroup.style.display = '';
+      }
+    });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a href="home.html">المهنيين</a>
+            <a href="booking.html">حجز موعد</a>
+            <a href="register-trainer.html">سجّل</a>
+            <a href="login.html">تسجيل الدخول</a>
+        </div>
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+             Worldwide
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="24" height="24" rx="6" fill="#5e9ea0"/>
+                <rect x="10" y="10" width="12" height="12" rx="3" fill="#fff"/>
+            </svg>
+           
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="home.html" onclick="closeMobileMenu()">المهنيين</a>
+        <a href="booking.html" onclick="closeMobileMenu()">حجز موعد</a>
+        <a href="register-trainer.html" onclick="closeMobileMenu()">سجّل</a>
+        <a href="login.html" onclick="closeMobileMenu()">تسجيل الدخول</a>
+    </div>
+
+    </div>
+    <div class="center-box">
+        <h2>احجز موعدك</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">اسمك الكامل</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="proName">اسم المهني</label>
+                <input type="text" id="proName" name="proName" placeholder="مثال: د. أحمد سالم">
+            </div>
+            <div class="form-group">
+                <label for="service">المهنة</label>
+                <select id="service" name="service">
+                    <option value="">اختر المهنة</option>
+                    <option value="مدرب">مدرب</option>
+                    <option value="طبيب">طبيب</option>
+                    <option value="أستاذ">أستاذ</option>
+                    <option value="عامل">عامل</option>
+                    <option value="حرفي">حرفي</option>
+                </select>
+            </div>
+            <div class="form-group" id="specialtyGroup" style="display:none;">
+                <label for="specialty">التخصص</label>
+                <input type="text" id="specialty" name="specialty" placeholder="مثال: جراحة، رياضيات...">
+            </div>
+            <div class="form-group">
+                <label for="phone">رقم الجوال</label>
+                <input type="tel" id="phone" name="phone" pattern="09[0-9]{8}" required placeholder="09XXXXXXXX" maxlength="10" minlength="10" autocomplete="tel">
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="date">تاريخ الموعد</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">الوقت</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="notes">ملاحظات إضافية</label>
+                <textarea id="notes" name="notes" placeholder="اكتب أي تفاصيل إضافية هنا..."></textarea>
+            </div>
+            <button class="login-btn" type="submit">احجز الآن</button>
+        </form>
+        <script>
+        document.querySelector('.center-box form').addEventListener('submit', function(e) {
+          if(!confirm('هل أنت متأكد من الحجز؟')) {
+            e.preventDefault();
+          }
+        });
+
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (mobileNav && toggle) {
+                mobileNav.classList.toggle('active');
+                toggle.classList.toggle('active');
+
+                // Prevent body scroll when menu is open
+                if (mobileNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                } else {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (mobileNav && toggle) {
+                mobileNav.classList.remove('active');
+                toggle.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        }
+
+        // Close mobile menu when clicking on the overlay
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (mobileNav) {
+                mobileNav.addEventListener('click', function(event) {
+                    // Close menu if clicking on the overlay (not on links)
+                    if (event.target === mobileNav) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+        </script>
+    </div>
+    <div class="footer">
+        © 2025 - Worldwide | All rights reserved.
+    </div>
+</body>
+</html>

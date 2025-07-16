@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Worldwide</title>
+    <link rel="stylesheet" href="responsive-global.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+</head>
+<body>
+    <div class="header">
+       
+       
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="24" height="24" rx="6" fill="#5e9ea0"/>
+                <rect x="10" y="10" width="12" height="12" rx="3" fill="#fff"/>
+            </svg>
+            Worldwide
+        </div>
+
+ <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+         <div class="nav">
+       <a href="home.html">المهنيين</a>
+                <a href="booking.html">حجز موعد</a>
+                <a href="register-trainer.html">سجّل</a>
+                <a href="login.html">تسجيل الدخول</a>
+        </div>
+
+
+
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="home.html" onclick="closeMobileMenu()">المهنيين</a>
+        <a href="booking.html" onclick="closeMobileMenu()">حجز موعد</a>
+        <a href="register-trainer.html" onclick="closeMobileMenu()">سجّل</a>
+        <a href="login.html" onclick="closeMobileMenu()">تسجيل الدخول</a>
+    </div>
+    <div class="register-container">
+        <form class="register-box">
+            <h2>تسجيل الدخول</h2>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          <button type="submit">Login</button>
+            <div class="register-extra">
+                <label class="remember"><input type="checkbox"> Remember me</label>
+            </div>
+            <a href="#" class="forgot">Forgot password</a>
+            <!-- register-bottom removed as requested -->
+        </form>
+        <script>
+        document.querySelector('.register-box').addEventListener('submit', function(e) {
+          e.preventDefault();
+          // هنا يمكنك إضافة تحقق بيانات الدخول إذا أردت
+          window.location.href = 'index.html';
+        });
+
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (mobileNav && toggle) {
+                mobileNav.classList.toggle('active');
+                toggle.classList.toggle('active');
+
+                // Prevent body scroll when menu is open
+                if (mobileNav.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                } else {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+
+            if (mobileNav && toggle) {
+                mobileNav.classList.remove('active');
+                toggle.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        }
+
+        // Close mobile menu when clicking on the overlay
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (mobileNav) {
+                mobileNav.addEventListener('click', function(event) {
+                    // Close menu if clicking on the overlay (not on links)
+                    if (event.target === mobileNav) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+        </script>
+    </div>
+    <footer class="footer">
+        © 2025 - Worldwide | All rights reserved.
+    </footer>
+</body>
+</html>

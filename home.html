@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية | Worldwide</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="responsive-global.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a href="home.html">المهنيين</a>
+            <a href="booking.html">حجز موعد</a>
+            <a href="register-trainer.html">سجّل</a>
+            <a href="login.html">تسجيل الدخول</a>
+        </div>
+        <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer;">
+            Worldwide
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="4" width="24" height="24" rx="6" fill="#5e9ea0"/>
+                <rect x="10" y="10" width="12" height="12" rx="3" fill="#fff"/>
+            </svg>
+            
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="home.html" onclick="closeMobileMenu()">المهنيين</a>
+        <a href="booking.html" onclick="closeMobileMenu()">حجز موعد</a>
+        <a href="register-trainer.html" onclick="closeMobileMenu()">سجّل</a>
+        <a href="login.html" onclick="closeMobileMenu()">تسجيل الدخول</a>
+    </div>
+    <div class="filter-form">
+        <form id="professionForm" autocomplete="off">
+            <label for="professionSelect">اختر نوع المهني:</label>
+            <select id="professionSelect">
+                <option value="all">الكل</option>
+                <option value="طبيب">طبيب</option>
+                <option value="أستاذ">أستاذ</option>
+                <option value="حرفي">حرفي</option>
+                <option value="عامل">عامل</option>
+            </select>
+            <span id="specialtyWrapper" style="display:none;">
+                <label for="specialtySelect">التخصص:</label>
+                <select id="specialtySelect">
+                    <option value="all">الكل</option>
+                </select>
+            </span>
+        </form>
+    </div>
+    <div class="cards-grid" id="cardsGrid">
+        <div class="profile-card" data-role="مدرب">
+            <img src="PP.png" alt="صورة المدرب">
+            <div class="profile-info">
+                <h3>محمد علي</h3>
+                <span class="role">مدرب</span>
+                <p>مدرب لياقة بخبرة 5 سنوات في التدريب الشخصي.</p>
+                <span class="city">الرياض</span>
+                <button onclick="location.href='booking.html'">احجز الآن</button>
+            </div>
+        </div>
+        <div class="profile-card" data-role="معلم">
+            <img src="PP.png" alt="صورة المعلم">
+            <div class="profile-info">
+                <h3>سارة يوسف</h3>
+                <span class="role">معلم</span>
+                <p>معلمة رياضيات بخبرة 10 سنوات في المدارس الدولية.</p>
+                <span class="city">جدة</span>
+                <button onclick="location.href='booking.html'">احجز الآن</button>
+            </div>
+        </div>
+        <div class="profile-card" data-role="طبيب">
+            <img src="PP.png" alt="صورة الطبيب">
+            <div class="profile-info">
+                <h3>د. أحمد سالم</h3>
+                <span class="role">طبيب</span>
+                <p>طبيب أسنان متخصص في طب الأطفال.</p>
+                <span class="city">الدمام</span>
+                <button onclick="location.href='booking.html'">احجز الآن</button>
+            </div>
+        </div>
+        <div class="profile-card" data-role="عامل">
+            <img src="PP.png" alt="صورة العامل">
+            <div class="profile-info">
+                <h3>خالد منصور</h3>
+                <span class="role">عامل</span>
+                <p>عامل صيانة كهربائية بخبرة واسعة في المنازل والشركات.</p>
+                <span class="city">مكة</span>
+                <button onclick="location.href='booking.html'">احجز الآن</button>
+            </div>
+        </div>
+        <!-- يمكنك تكرار الكارد أو جلب البيانات ديناميكياً لاحقاً -->
+    </div>
+
+      <div id="fade" onclick="Hide();"></div>
+
+
+
+    <div id="light" class="popup-card-modal">
+      <div class="popup-card-content">
+        <a id="close" href="#" onclick="Hide();" class="popup-card-close">×</a>
+        <div class="popup-card-img-wrap">
+          <img src="PP.png" alt="صورة الخبير" class="popup-card-img">
+        </div>
+        <div class="popup-card-body">
+          <h3 class="popup-card-name">محمد علي</h3>
+          <span class="popup-card-role">مدرب</span>
+          <div class="popup-card-desc">مدرب لياقة بخبرة 5 سنوات في التدريب الشخصي.</div>
+          <div class="popup-card-row"><b>المدينة:</b> الرياض</div>
+          <div class="popup-card-row"><b>البريد الإلكتروني:</b> example@email.com</div>
+          <div class="popup-card-row"><b>رقم الجوال:</b> 0999999999</div>
+          <div class="popup-card-row"><b>المسمى الوظيفي:</b> مدرب</div>
+          <div class="popup-card-row"><b>مواعيد متاحة:</b> كل يوم من 4 إلى 8 مساءً</div>
+          <div class="popup-card-row"><b>سعر الجلسة:</b> 150 ريال</div>
+          <div class="popup-card-row"><b>وصف إضافي:</b> مدرب معتمد في اللياقة البدنية والتغذية.</div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="footer">
+        © 2025 - Worldwide | All rights reserved.
+    </div>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    function Show() {
+      $("#light").show();
+      $("#fade").show();
+    }
+    function Hide() {
+      $("#light").hide();
+      $("#fade").hide();
+    }
+    $(document).ready(function() {
+      $(".profile-card").click(function(e) {
+        if ($(e.target).is("button")) return;
+        // جلب بيانات الكارد
+        var card = $(this);
+        var imgSrc = card.find("img").attr("src");
+        var name = card.find("h3").text();
+        var role = card.find(".role").text();
+        var desc = card.find("p").text();
+        var city = card.find(".city").text();
+        // تعبئة بيانات الكارد المنبثقة
+        $("#light .popup-card-img").attr("src", imgSrc);
+        $("#light .popup-card-name").text(name);
+        $("#light .popup-card-role").text(role);
+        $("#light .popup-card-desc").text(desc);
+        $("#light .popup-card-row:contains('المدينة')").html("<b>المدينة:</b> " + city);
+        // إخفاء أو إظهار باقي التفاصيل حسب الحاجة (يمكنك التوسعة لاحقاً)
+        Show();
+      });
+      $("#close, #fade").click(Hide);
+      $(document).on('keydown', function(e) {
+        if (e.keyCode == 27) Hide();
+      });
+    });
+
+    // Mobile Menu Functions
+    function toggleMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+
+        if (mobileNav && toggle) {
+            mobileNav.classList.toggle('active');
+            toggle.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+            } else {
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        }
+    }
+
+    function closeMobileMenu() {
+        const mobileNav = document.getElementById('mobileNav');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+
+        if (mobileNav && toggle) {
+            mobileNav.classList.remove('active');
+            toggle.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        }
+    }
+
+    // Close mobile menu when clicking on the overlay
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileNav = document.getElementById('mobileNav');
+
+        if (mobileNav) {
+            mobileNav.addEventListener('click', function(event) {
+                // Close menu if clicking on the overlay (not on links)
+                if (event.target === mobileNav) {
+                    closeMobileMenu();
+                }
+            });
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    </script>
+</body>
+</html>

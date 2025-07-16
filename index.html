@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة Worldwide | الرئيسية</title>
+    <link rel="stylesheet" href="responsive-global.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+
+      <link href="fonts/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="fonts/fontawesome/css/all.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <section class="hero-section">
+        
+        <div class="hero-overlay"></div>    
+        <!-- دمج الهيدر داخل الهيرو -->
+        <div class="header">
+            <div class="nav">
+                <a href="home.html">المهنيين</a>
+                <a href="booking.html">حجز موعد</a>
+                <a href="register-trainer.html">سجّل</a>
+                <a href="login.html">تسجيل الدخول</a>   
+            </div>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+
+            <div class="logo" onclick="location.href='index.html'">
+                Worldwide
+            </div>
+            
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="home.html" onclick="closeMobileMenu()">المهنيين</a>
+            <a href="booking.html" onclick="closeMobileMenu()">حجز موعد</a>
+            <a href="register-trainer.html" onclick="closeMobileMenu()">سجّل</a>
+            <a href="login.html" onclick="closeMobileMenu()">تسجيل الدخول</a>
+        </div>
+        <div class="hero-content">
+            <h1>منصتك للمهنيين والخبراء</h1>
+            <p>احجز موعدك مع أفضل الأطباء، المعلمين، الحرفيين وغيرهم بسهولة وموثوقية.</p>
+            <button class="main-btn" onclick="location.href='home.html'">استعرض المهنيين</button>
+        </div>
+        
+    </section>
+    <section class="about-section creative-about">
+        <h2>من نحن</h2>
+        <p class="about-lead">
+            منصة <span class="about-lead-green">Worldwide</span> هي جسر يربط بين العملاء والمهنيين المتميزين في مختلف المجالات.
+        </p>
+        <div class="about-flex">
+            <div class="about-card">
+                <span class="about-icon">🌟</span>
+                <h3>منصة متنوعة</h3>
+                <p>منصة <b>Worldwide</b> تجمع بين أفضل المهنيين والخبراء في الطب، التعليم، الهندسة، الحرف وغيرها.</p>
+            </div>
+            <div class="about-card">
+                <span class="about-icon">🤝</span>
+                <h3>هدفنا</h3>
+                <p>هدفنا: ربطك بسهولة مع الشخص المناسب بثقة واحترافية عبر تجربة سلسة وشفافة.</p>
+            </div>
+            <div class="about-card">
+                <span class="about-icon">🔒</span>
+                <h3>الأمان والدعم</h3>
+                <p>تجربة آمنة للجميع مع دعم متواصل وشفافية كاملة في كل خطوة.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section creative-contact">
+      <div class="center-box">
+        <h2 style="margin-bottom:18px;">تواصل معنا</h2>
+        <form>
+          <div class="form-group">
+            <input type="text" name="fullname" placeholder="الاسم الكامل" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="رسالتك" required></textarea>
+          </div>
+          <button type="submit" class="register-btn" style="margin-top:18px;">إرسال</button>
+        </form>
+      </div>
+      <div class="footer">
+        <div class="icon">
+            <a href="https://facebook.com" target="_blank">
+                <i class="fa-brands fa-facebook" style="color:rgb(0, 0, 0);font-size:25px;"></i>
+            </a>
+            <a href="https://github.com" target="_blank">
+                <i class="fa-brands fa-github" style="color:rgb(0, 0, 0);font-size:25px;"></i>
+            </a>
+            <a href="mailto:info@worldwide.com" target="_blank">
+                <i class="fa-solid fa-envelope" style="color:rgb(0, 0, 0);font-size:25px;"></i>
+            </a>
+</div>
+<div class="footer-text">
+        © 2025 - Worldwide | All rights reserved.
+        </div>
+      </div>
+    </section>
+
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script>
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 5) { // Change 100 to whatever scroll threshold you prefer
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+
+    $(document).ready(function() {
+    // Function to check if element is in viewport
+    function isElementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
+            rect.bottom >= 0
+        );
+    }
+
+    // Function to handle scroll events
+    function handleScroll() {
+        $('.creative-about').each(function() {
+            if (isElementInViewport(this)) {
+                $(this).addClass('visible');
+                
+                // Animate each card with a slight delay between them
+                $(this).find('.about-card').each(function(index) {
+                    var $card = $(this);
+                    setTimeout(function() {
+                        $card.addClass('visible');
+                    }, index * 150);
+                });
+            }
+        });
+    }
+
+    // Check on initial load
+    handleScroll();
+
+    // Check on scroll
+    $(window).on('scroll', handleScroll);
+});
+
+// Mobile Menu Functions
+function toggleMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+
+    if (mobileNav && toggle) {
+        mobileNav.classList.toggle('active');
+        toggle.classList.toggle('active');
+
+        // Prevent body scroll when menu is open
+        if (mobileNav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        } else {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        }
+    }
+}
+
+function closeMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+
+    if (mobileNav && toggle) {
+        mobileNav.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
+}
+
+// Close mobile menu when clicking on the overlay
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileNav = document.getElementById('mobileNav');
+
+    if (mobileNav) {
+        mobileNav.addEventListener('click', function(event) {
+            // Close menu if clicking on the overlay (not on links)
+            if (event.target === mobileNav) {
+                closeMobileMenu();
+            }
+        });
+    }
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
+});
+
+// Handle escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeMobileMenu();
+    }
+});
+
+</script>
+
+</body>
+</html>

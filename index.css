@@ -1,0 +1,727 @@
+/* Basic Reset & Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: white;
+  font-family: Arial, sans-serif;
+  padding-bottom: 0px;
+  position: relative;
+        margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.header.scrolled .logo {
+  color: #25636a;
+}
+
+.nav a {
+  color: #fff;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 5px;
+}
+
+.header.scrolled .nav a {
+ color: #5e9ea0;
+}
+.nav a:hover{
+  color: #5e9ea0;
+  border: #25636a 2.5px solid;
+  border-radius: 5px;
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: url(/hyperrealistic-photo-professions-brunette-woman-260nw-2617948181.webp);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: slide;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #eaf6f6cc 60%, #5e9ea033 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #25636a;
+  padding: 0 20px;
+  margin-top: 60px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 18px;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+}
+
+.main-btn {
+  background: linear-gradient(90deg, #5e9ea0 60%, #b2dfdf 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 13px 38px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.main-btn:hover {
+  background: linear-gradient(90deg, #4b8687 60%, #5e9ea0 100%);
+}
+
+/* About Section */
+.about-section {
+  padding: 100px 20px 60px;
+  text-align: center;
+}
+
+.about-section h2 {
+  color: #25636a;
+  font-size: 2.2rem;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+.about-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #5e9ea0, #b2dfdf);
+  border-radius: 3px;
+}
+
+.about-lead {
+  font-size: 1.18rem;
+  margin-bottom: 32px;
+  color: #444;
+}
+
+.about-lead-green {
+  color: #5e9ea0;
+  font-weight: bold;
+}
+
+.about-flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-card {
+  background: linear-gradient(135deg, #eaf6f6 60%, #b2dfdf 100%);
+  
+  border-radius: 18px;
+  padding: 32px 24px;
+  flex: 1 1 220px;
+  min-width: 220px;
+  max-width: 320px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #b2dfdf 0%, #5e9ea0 100%);
+}
+
+.about-icon {
+  font-size: 2.7rem;
+  margin-bottom: 18px;
+  color: #5e9ea0;
+}
+
+.about-card h3 {
+  color: #25636a;
+  font-size: 1.28rem;
+  margin-bottom: 12px;
+}
+
+/* Contact Section */
+.contact-section {
+  background: linear-gradient(to bottom, #d3d3d3 0%, #000 100%);
+  padding: 80px 0;
+  padding-bottom: 0px;
+}
+
+.contact-section h2 {
+  color: #fff;
+  font-size: 2.1rem;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.contact-section form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-section input, 
+.contact-section textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+.contact-section button {
+  background: #6bb3ad;
+  color: #fff;
+  padding: 14px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-section button:hover {
+  background: #5e9ea0;
+}
+
+/* Footer */
+
+
+/* Responsive Design */
+
+/* Mobile Menu Styles */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.header.scrolled .mobile-menu-toggle span {
+  background: #25636a;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.mobile-nav {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(37, 99, 106, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 15px 30px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .header {
+    padding: 15px 30px;
+  }
+
+  .hero-content {
+    padding: 0 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-flex {
+    gap: 25px;
+    max-width: 800px;
+  }
+
+  .about-card {
+    min-width: 200px;
+    max-width: 280px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .hero-section {
+    height: 100vh;
+    min-height: 500px;
+    background-attachment: scroll; /* Better performance on mobile */
+    background-position: center top;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+    margin-top: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .main-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+  }
+
+  .about-section {
+    padding: 80px 20px 50px;
+  }
+
+  .about-section h2 {
+    font-size: 1.9rem;
+    margin-bottom: 30px;
+  }
+
+  .about-lead {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+
+  .about-flex {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .about-card {
+    max-width: 100%;
+    min-width: auto;
+    margin: 0 10px;
+  }
+
+  .contact-section {
+    padding: 60px 20px 0;
+  }
+
+  .contact-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .contact-section form {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+.header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #3a3a3a;
+    letter-spacing: 1px;
+}
+  .hero-section {
+    height: 100vh;
+    min-height: 450px;
+    background-position: center 20%;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(180deg, #eaf6f6dd 50%, #5e9ea044 100%);
+  }
+
+  .hero-content {
+    padding: 0 15px;
+    margin-top: 30px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .main-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+
+  .about-section {
+    padding: 60px 15px 40px;
+  }
+
+  .about-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-lead {
+    font-size: 1rem;
+    padding: 0 5px;
+  }
+
+  .about-card {
+    padding: 25px 20px;
+    margin: 0 5px;
+  }
+
+  .about-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-icon {
+    font-size: 2.3rem;
+  }
+
+  .contact-section {
+    padding: 50px 15px 0;
+  }
+
+  .contact-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-section form {
+    padding: 0 5px;
+  }
+
+  .contact-section input,
+  .contact-section textarea {
+    padding: 12px 14px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 360px) {
+  .hero-section {
+    min-height: 400px;
+    background-position: center 30%;
+  }
+
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .main-btn {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .about-card {
+    padding: 20px 15px;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    height: 100vh;
+    min-height: 400px;
+  }
+
+  .hero-content {
+    margin-top: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-section {
+    background-image: url(/hyperrealistic-photo-professions-brunette-woman-260nw-2617948181.webp);
+  }
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section {
+    background-attachment: scroll;
+  }
+
+  .about-card {
+    transition: none;
+  }
+
+  .about-card:hover {
+    transform: none;
+  }
+
+  .main-btn {
+    transition: none;
+  }
+}
+
+
+
+.creative-about {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+}
+
+.creative-about.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.about-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    transition-delay: 0.2s;
+}
+
+.about-card.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.about-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer .footer-text {
+  flex: 1;
+  text-align: center;
+  min-width: 200px;
+}
+
+.footer .icon {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.footer .icon a {
+  transition: transform 0.3s ease;
+}
+
+.footer .icon a:hover {
+  transform: translateY(-2px);
+}
+
+/* Footer Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 20px;
+    gap: 15px;
+  }
+
+  .footer .footer-text {
+    padding-left: 0;
+    order: 2;
+  }
+
+  .footer .icon {
+    order: 1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 15px;
+  }
+
+  .footer .icon {
+    gap: 15px;
+  }
+
+  .footer .icon i {
+    font-size: 22px !important;
+  }
+}
